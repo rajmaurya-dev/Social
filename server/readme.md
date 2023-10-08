@@ -1,4 +1,4 @@
-Certainly, here's a shorter version of the README with just the basic details:
+
 
 # Social Backend
 
