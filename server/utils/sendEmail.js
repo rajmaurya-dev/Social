@@ -24,34 +24,25 @@ export const sendVerificationEmail = async (user, res) => {
     from: AUTH_EMAIL,
     to: email,
     subject: "Verification",
-    html: ` <html>
-    <head>
-        <!-- Your HTML email template here -->
-    </head>
-    <body>
-        <table width="100%" cellspacing="0" cellpadding="0">
-            <tr>
-                <td align="center">
-                    <table width="600" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td bgcolor="#007BFF" height="100" style="text-align: center; color: #ffffff; font-size: 24px; font-weight: bold;">
-                                Email Verification
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 20px;">
-                                <p>Hello ${lastName},</p>
-                                <p>Thank you for signing up for our service. To complete your registration, please click the verification link below:</p>
-                                <p><a href="${link}" style="background-color: #007BFF; color: #ffffff; padding: 10px 20px; text-decoration: none;">Verify Your Email</a></p>
-                                <p>If you did not register for our service, please ignore this email.</p>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-    </body>
-    </html>`,
+    html: `<div
+    style='font-family: Arial, sans-serif; font-size: 20px; color: #333; background-color: #f7f7f7; padding: 20px; border-radius: 5px;'>
+    <h3 style="color: rgb(8, 56, 188)">Please verify your email address</h3>
+    <hr>
+    <h4>Hi ${lastName},</h4>
+    <p>
+        Please verify your email address so we can know that it's really you.
+        <br>
+    <p>This link <b>expires in 1 hour</b></p>
+    <br>
+    <a href=${link}
+        style="color: #fff; padding: 14px; text-decoration: none; background-color: #000;  border-radius: 8px; font-size: 18px;">Verify
+        Email Address</a>
+    </p>
+    <div style="margin-top: 20px;">
+        <h5>Best Regards</h5>
+        <h5>ShareFun Team</h5>
+    </div>
+</div>`,
   };
 
   try {

@@ -49,7 +49,7 @@ export const login = async (req, res, next) => {
     if (!user) {
       next("Invalid username or password");
     }
-    if (user?.verified) {
+    if (!user?.verified) {
       next(
         "User email is not verified. Check your email and verify your account"
       );
