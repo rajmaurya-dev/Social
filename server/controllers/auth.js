@@ -49,10 +49,17 @@ export const login = async (req, res, next) => {
     if (!user) {
       next("Invalid username or password");
     }
-    if (!user?.verified) {
+    // if (!user?.verified) {
+    //   next(
+    //     "User email is not verified. Check your email and verify your account"
+    //   );
+    //   return;
+    // }
+    if (user?.verified) {
       next(
-        "User email is not verified. Check your email and verify your account"
+        "User email is not verified. Check your email account and verify your email"
       );
+      return;
     }
     const isMatch = await compareString(password, user?.password);
 
@@ -61,6 +68,12 @@ export const login = async (req, res, next) => {
     }
     user.password = undefined;
     const token = createJWT(user?._id);
+    res.status(201).json({
+      success: true,
+      message: "Login successfully",
+      user,
+      token,
+    });
   } catch (error) {
     console.log(error);
     res.status(404).json({ message: error.message });
